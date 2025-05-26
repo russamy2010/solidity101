@@ -2,7 +2,7 @@
 pragma solidity ^0.8.18; //stating the version-->will work with anything above 0.8.18
 ///can use range notation as well
 
-ccontract SimpleStorage {
+contract SimpleStorage {
     uint256 myFavoriteNumber;
 
     struct Person {
