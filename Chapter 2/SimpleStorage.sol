@@ -33,3 +33,9 @@ contract SimpleStorage2 {}
 contract SimpleStorage3 {}
 
 contract SimpleStorage4 {}
+
+//notes:  One of the fundamental aspects of blockchain development 
+// is how composability works. Contracts can be deployed on different blockchains, 
+//but they cannot access and manipulate data from other contracts that are deployed on other blockchains. 
+//The idea behind composabilityis the seamless and permissionless interaction between contracts, known as **composability**. 
+//This is particularly crucial in decentralized finance (DeFi), where complex financial products interact effortlessly through common smart contract interfaces
