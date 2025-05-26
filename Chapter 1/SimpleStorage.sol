@@ -3,7 +3,7 @@ pragma solidity ^0.8.18; //stating the version-->will work with anything above 0
 ///can use range notation as well
 
 contract SimpleStorae{
-    uint256 public favoriteNumber; // all types have a default value uintis 0
+    uint256 favoriteNumber; // all types have a default value uintis 0
        // with no comment, defaults to private-->should see blue button under Deployed Contract in Deploy and run transactions
 
     function store (uint256 _number) public {
