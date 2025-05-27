@@ -23,10 +23,14 @@ contract StorageFactory {
         listOfSimpleStorageContracts[_simpleStorageIndex].store(
             _simpleStorageNumber
         );
-    }
+    } //keep track of the different contracts that are running
 
     function sfGet(uint256 _simpleStorageIndex) public view returns (uint256) {
         // return SimpleStorage(address(simpleStorageArray[_simpleStorageIndex])).retrieve();
         return listOfSimpleStorageContracts[_simpleStorageIndex].retrieve();
     }
 }
+
+//import keyword allows for referencing other contracts-->similar to creating a path in Pythong to import into notebook
+//use named imports to specify what you want to import import {item} from path
+//to interact with a contract, you need the Address and the ABI (actually just the function selector)

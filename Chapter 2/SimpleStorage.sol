@@ -15,7 +15,7 @@ contract SimpleStorage {
     mapping(string => uint256) public nameToFavoriteNumber;
 
     function store(uint256 _favoriteNumber) public virtual {
-        myFavoriteNumber = _favoriteNumber;
+        myFavoriteNumber = _favoriteNumber; //virtual means that this function is overwrittable
     }
 
     function retrieve() public view returns (uint256) {
@@ -39,3 +39,4 @@ contract SimpleStorage4 {}
 //but they cannot access and manipulate data from other contracts that are deployed on other blockchains. 
 //The idea behind composabilityis the seamless and permissionless interaction between contracts, known as **composability**. 
 //This is particularly crucial in decentralized finance (DeFi), where complex financial products interact effortlessly through common smart contract interfaces
+//common syntax: SimpleStorage refers to the contract, simpleStorage refers to the variable
