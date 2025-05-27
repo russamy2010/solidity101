@@ -3,11 +3,11 @@ pragma solidity ^0.8.18;
 
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol"; 
 
-// Why is this a library and not abstract?
+// Why is this a library and not abstract?-->similar to a contract and allows for other contracts to use this; can't have any state variables and all functions must be internal
 // Why not an interface?
 library PriceConverter {
     // We could make this public, but then we'd have to deploy it
-    function getPrice() internal view returns (uint256) {
+    function getPrice() internal view returns (uint256) {    //first input for a library is the conversion type
         // Sepolia ETH / USD Address
         // https://docs.chain.link/data-feeds/price-feeds/addresses
         AggregatorV3Interface priceFeed = AggregatorV3Interface(
