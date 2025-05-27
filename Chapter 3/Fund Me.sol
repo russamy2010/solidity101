@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18; //stating the version-->will work with anything above 0.8.18
 // Note: The AggregatorV3Interface might be at a different location than what was in the video!
-import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol"; // refers to npm package, from a package repository
 import {PriceConverter} from "./PriceConverter.sol";
 // blockchain oracles--any device that interacts with the off-chain world to provide xternal data or computationto smart contracts
 // reintroduces a point of failure
@@ -17,6 +17,7 @@ contract FundMe {
     // Could we make this constant?  /* hint: no! We should make it immutable! */
     address public /* immutable */ i_owner;
     uint256 public constant MINIMUM_USD = 5 * 10 ** 18;
+        // always multiple before dividing
 
     constructor() {
         i_owner = msg.sender;
@@ -29,13 +30,15 @@ contract FundMe {
         funders.push(msg.sender);
         // require keyword-->requires users to send a minimum value
         // if a transaction reverts, then everything is undone and the transaction failed, but you will spend gas
+        //msg.sender-->gathers the information of the funder (person sending money to contract)
 
     }
 
     function getVersion() public view returns (uint256) {
         AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
         return priceFeed.version();
-    }
+    } //way to bring the interface into the contract without copying all of the code-->get the interface (interface keyword), 
+//compile (will get an address) and wrap the interface with the address
 
     modifier onlyOwner() {
         // require(msg.sender == owner);
