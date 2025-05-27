@@ -3,6 +3,8 @@ pragma solidity ^0.8.18; //stating the version-->will work with anything above 0
 // Note: The AggregatorV3Interface might be at a different location than what was in the video!
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import {PriceConverter} from "./PriceConverter.sol";
+// blockchain oracles--any device that interacts with the off-chain world to provide xternal data or computationto smart contracts
+// reintroduces a point of failure
 
 error NotOwner();
 
@@ -25,6 +27,9 @@ contract FundMe {
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
         addressToAmountFunded[msg.sender] += msg.value;
         funders.push(msg.sender);
+        // require keyword-->requires users to send a minimum value
+        // if a transaction reverts, then everything is undone and the transaction failed, but you will spend gas
+
     }
 
     function getVersion() public view returns (uint256) {
@@ -63,6 +68,11 @@ contract FundMe {
         fund();
     }
 }
+// notes: payable keyword makes it possible to send crypto through a contract (hold funds)-->contract address act as a wallet
+//solidity has global key words
+//wei--refers to the smallest unit of Ether (wei is to Ether what a cent is to a dollar)
+//gwei--unit of Ether used to calculate gas fees (costs to process a transaction) for transactions and smart contract executions
+//gwei is bigger than wei, but both are only a mall fraction of Eth
 
   // Explainer from: https://solidity-by-example.org/fallback/
     // Ether is sent to contract
