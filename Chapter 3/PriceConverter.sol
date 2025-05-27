@@ -28,3 +28,15 @@ library PriceConverter {
         return ethAmountInUsd;
     }
 }
+
+\\notes immutability and constants
+\\convert variables that are only set one time-->constant prevents variables from being changed; the value will be constant at compile time and assigned
+   \\ where the variable is declared; naming is in all caps with underscores
+\\immutable--use when the variable is set outside the line they are declared (i.e., in a constructor); i_ indicates immutable
+
+\\custom errors--declare errors and then use if statements instead of errors (saves gas by calling the error code instead of the string
+\\ receive and fallback--'_receive_' and '_fallback_'-->receive is executed on a call to the contract with empty call data; can only have at most one receive function  and cannot have arguments,  
+    \\return anything and must have external visbility and payable state mutability; will be triggered if blank
+\\ fallback-->if data is sent, then need a fallback function; executed on a call to the contract if none of the other functions
+    \\match the given function signature or if no data was supplied at all and there is no receive Ether function; always receives data, but in order to receive Ether must be marked payable
+    \\does not use function keyword
