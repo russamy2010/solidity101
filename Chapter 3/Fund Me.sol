@@ -44,15 +44,15 @@ contract FundMe {
         // require(msg.sender == owner);
         if (msg.sender != i_owner) revert NotOwner();
         _;
-    }
+    } \\modifier keyword creates a keyword that can be added to a function to add additional functionality
 
-    function withdraw() public onlyOwner {
+    function withdraw() public onlyOwner {    \\constructor keyword that only allows for certain calls+ modifier
         for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
             address funder = funders[funderIndex];
             addressToAmountFunded[funder] = 0;
-        }
-        funders = new address[](0);
-        // // transfer
+        } //using a for loop (just like Python)-->syntax for (starting index, ending index, step amount)
+        funders = new address[](0); // resetting an array
+        // // transfer 
         // payable(msg.sender).transfer(address(this).balance);
 
         // // send
@@ -76,6 +76,10 @@ contract FundMe {
 //wei--refers to the smallest unit of Ether (wei is to Ether what a cent is to a dollar)
 //gwei--unit of Ether used to calculate gas fees (costs to process a transaction) for transactions and smart contract executions
 //gwei is bigger than wei, but both are only a mall fraction of Eth
+//transfer--send the funds to who is calling the function; must caste to payable address; caps at 2300 gas and will error
+//send--""; also caps at 2300 gas, but will instead throw bool on whether it was successful-->need to include include code to revert the transactions (include require statement)
+//call--lower level command; can be used to call any function in Ethereum; similar to send; payable (msg.sender).call(value: address(this)(""))
+    //returns two objects: bool and bytes object (data returned--needs to be in memory); need to include the revert function
 
   // Explainer from: https://solidity-by-example.org/fallback/
     // Ether is sent to contract
